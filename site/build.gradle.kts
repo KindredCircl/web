@@ -1,4 +1,6 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+import kotlinx.html.link
+import kotlinx.html.script
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -13,7 +15,23 @@ version = "1.0-SNAPSHOT"
 kobweb {
     app {
         index {
-            description.set("Powered by Kobweb")
+            head.add {
+                link {
+                    rel = "stylesheet"
+                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+                }
+                link {
+                    href = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+                    rel = "stylesheet"
+                }
+                script {
+                    src = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://fonts.googleapis.com/icon?family=Material+Icons"
+                }
+            }
         }
     }
 }
@@ -33,9 +51,7 @@ kotlin {
             implementation(libs.compose.html.core)
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
-            // This default template uses built-in SVG icons, but what's available is limited.
-            // Uncomment the following if you want access to a large set of font-awesome icons:
-            // implementation(libs.silk.icons.fa)
+            implementation(libs.silk.icons.fa)
             implementation(libs.kobwebx.markdown)
         }
 
