@@ -14,10 +14,11 @@ import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.addVariantBase
 import com.varabyte.kobweb.silk.style.base
-import com.varabyte.kobweb.silk.theme.colors.palette.color
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import com.varabyte.kobweb.silk.theme.modifyStyleBase
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.CSSMediaQuery
+import org.jetbrains.compose.web.css.StylePropertyValue
+import org.jetbrains.compose.web.css.percent
+import org.jetbrains.compose.web.css.px
 
 @InitSilk
 fun initSiteStyles(ctx: InitSilkContext) {
@@ -33,8 +34,7 @@ fun initSiteStyles(ctx: InitSilkContext) {
     ctx.stylesheet.registerStyleBase("body") {
         Modifier
             .fontFamily(
-                "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-                "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "sans-serif"
+                "Inter", "Poppins"
             )
             .fontSize(18.px)
             .lineHeight(1.5)
@@ -48,16 +48,19 @@ fun initSiteStyles(ctx: InitSilkContext) {
 
 val HeadlineTextStyle = CssStyle.base {
     Modifier
-        .fontSize(3.cssRem)
+        .fontFamily("Inter")
+        .fontWeight(600)
+        .fontSize(48.px)
         .textAlign(TextAlign.Start)
         .lineHeight(1.2) //1.5x doesn't look as good on very large text
 }
 
 val SubheadlineTextStyle = CssStyle.base {
     Modifier
-        .fontSize(1.cssRem)
-        .textAlign(TextAlign.Start)
-        .color(colorMode.toPalette().color.toRgb().copyf(alpha = 0.8f))
+        .fontFamily("Poppins")
+        .fontSize(24.px)
+        .fontWeight(500)
+        .padding(bottom = 10.px)
 }
 
 val CircleButtonVariant = ButtonStyle.addVariantBase {

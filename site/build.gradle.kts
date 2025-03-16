@@ -17,11 +17,8 @@ kobweb {
         index {
             head.add {
                 link {
-                    rel = "stylesheet"
-                    href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-                }
-                link {
-                    href = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+                    href =
+                        "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
                     rel = "stylesheet"
                 }
                 script {
@@ -30,6 +27,14 @@ kobweb {
                 link {
                     rel = "stylesheet"
                     href = "https://fonts.googleapis.com/icon?family=Material+Icons"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://fonts.googleapis.com/icon?family=Inter"
+                }
+                link {
+                    rel = "stylesheet"
+                    href = "https://fonts.googleapis.com/icon?family=Poppins"
                 }
             }
         }

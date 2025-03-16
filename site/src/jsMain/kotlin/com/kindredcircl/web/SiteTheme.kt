@@ -1,5 +1,6 @@
 package com.kindredcircl.web
 
+import com.kindredcircl.web.theme.*
 import com.varabyte.kobweb.compose.ui.graphics.Color
 import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.silk.init.InitSilk
@@ -7,6 +8,7 @@ import com.varabyte.kobweb.silk.init.InitSilkContext
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.background
 import com.varabyte.kobweb.silk.theme.colors.palette.color
+import org.jetbrains.compose.web.css.CSSColorValue
 
 /**
  * @property nearBackground A useful color to apply to a container that should differentiate itself from the background
@@ -18,26 +20,26 @@ class SitePalette(
     val brand: Brand,
 ) {
     class Brand(
-        val primary: Color = Color.rgb(0x3C83EF),
-        val accent: Color = Color.rgb(0xF3DB5B),
+        val primary: CSSColorValue ,
+        val accent: CSSColorValue,
     )
 }
 
 object SitePalettes {
     val light = SitePalette(
-        nearBackground = Color.rgb(0xF4F6FA),
+        nearBackground = Color.rgb(0xE6C892),
         cobweb = Colors.LightGray,
         brand = SitePalette.Brand(
-            primary = Color.rgb(0x3C83EF),
-            accent = Color.rgb(0xFCBA03),
+            primary = lightPrimaryContainer,
+            accent  = lightKCPurple,
         )
     )
     val dark = SitePalette(
-        nearBackground = Color.rgb(0x13171F),
+        nearBackground = Color.rgb(0x6A4C00),
         cobweb = Colors.LightGray.inverted(),
         brand = SitePalette.Brand(
-            primary = Color.rgb(0x3C83EF),
-            accent = Color.rgb(0xF3DB5B),
+            primary = darkPrimaryContainer,
+            accent = darkKCPurple,
         )
     )
 }
@@ -51,8 +53,8 @@ fun ColorMode.toSitePalette(): SitePalette {
 
 @InitSilk
 fun initTheme(ctx: InitSilkContext) {
-    ctx.theme.palettes.light.background = Color.rgb(0xFAFAFA)
+    ctx.theme.palettes.light.background = lightOnPrimaryContainer as Color
     ctx.theme.palettes.light.color = Colors.Black
-    ctx.theme.palettes.dark.background = Color.rgb(0x06080B)
+    ctx.theme.palettes.dark.background = darkOnPrimaryContainer as Color
     ctx.theme.palettes.dark.color = Colors.White
 }

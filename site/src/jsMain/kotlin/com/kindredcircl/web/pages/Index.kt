@@ -1,7 +1,15 @@
 package com.kindredcircl.web.pages
 
 import androidx.compose.runtime.Composable
+import com.kindredcircl.web.HeadlineTextStyle
+import com.kindredcircl.web.SubheadlineTextStyle
+import com.kindredcircl.web.components.layouts.pageLayout
+import com.kindredcircl.web.theme.ButtonStyle
+import com.kindredcircl.web.toSitePalette
+import com.kindredcircl.web.util.Res
+import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.StyleVariable
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -13,6 +21,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.rememberPageContext
 import com.varabyte.kobweb.silk.components.forms.Button
+import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
@@ -23,16 +32,11 @@ import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.fr
-import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.H1
+import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
-import com.kindredcircl.web.HeadlineTextStyle
-import com.kindredcircl.web.SubheadlineTextStyle
-import com.kindredcircl.web.components.layouts.PageLayout
-import com.kindredcircl.web.toSitePalette
 
 // Container that has a tagline and grid on desktop, and just the tagline on mobile
 val HeroContainerStyle = CssStyle {
@@ -66,10 +70,80 @@ private fun GridCell(color: Color, row: Int, column: Int, width: Int? = null, he
     )
 }
 
+
 @Page
 @Composable
+fun homePage() {
+    pageLayout("Home") {
+        Row(HeroContainerStyle.toModifier()) {
+            Box {
+                val sitePalette = ColorMode.current.toSitePalette()
+                Column(Modifier.fillMaxWidth()) { // Adjust top margin as needed
+                    // Hero Section
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 5.px, bottom = 20.px)
+                            .textAlign(TextAlign.Center)
+                            .alignItems(alignItems = AlignItems.Center)
+                    ) {
+                        Image(
+                            src = Res.Img.LOGO, // Replace with your image path
+                            alt = "KindredCircl Logo",
+                            modifier = Modifier.width(300.px).margin(bottom = 20.px).objectFit(ObjectFit.Contain)
+                        )
+
+                        H1(HeadlineTextStyle.toAttrs()) {
+                            Text("Discover, Connect, Belong")
+                        }
+
+                        P(SubheadlineTextStyle.toAttrs()) {
+                            Text("Join our community and find your circle.")
+                        }
+
+                        Button(
+                            onClick = { /* Handle button click */ },
+                            modifier = ButtonStyle.toModifier() // Or your custom color palette
+                        ) {
+                            Text("Be a Beta Tester")
+                        }
+                    }
+
+                    // Content Section
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 50.px, bottom = 50.px)
+                            .alignItems(alignItems = AlignItems.Center)
+                            .textAlign(TextAlign.Center)
+                    ) {
+
+                        H1(
+                            HeadlineTextStyle.toAttrs()
+                        ) {
+                            Text("Welcome to KindredCircl")
+                        }
+
+                        Div(Modifier.width(800.px).textAlign(TextAlign.Start).toAttrs()) {
+                            P(SubheadlineTextStyle.toAttrs()) {
+                                Text("We are building a platform to help people discover and connect with like-minded individuals. Our goal is to create a vibrant and supportive community where everyone feels a sense of belonging.")
+                            }
+
+                            P(SubheadlineTextStyle.toAttrs()) {
+                                Text("Stay tuned for updates as we continue to develop our platform.")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@Composable
 fun HomePage() {
-    PageLayout("Home") {
+    pageLayout("Home") {
         Row(HeroContainerStyle.toModifier()) {
             Box {
                 val sitePalette = ColorMode.current.toSitePalette()
@@ -131,3 +205,6 @@ fun HomePage() {
         }
     }
 }
+
+
+
