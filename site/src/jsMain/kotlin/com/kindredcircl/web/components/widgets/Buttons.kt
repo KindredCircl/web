@@ -10,7 +10,7 @@ import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun hamburgerButton(onClick: () -> Unit) {
-    iconButton(
+    IconButton(
         onClick
     ) {
         HamburgerIcon()
@@ -19,7 +19,7 @@ fun hamburgerButton(onClick: () -> Unit) {
 
 @Composable
 fun closeButton(onClick: () -> Unit) {
-    iconButton(onClick) {
+    IconButton(onClick) {
         CloseIcon()
     }
 }
