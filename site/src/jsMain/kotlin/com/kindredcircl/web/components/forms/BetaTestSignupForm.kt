@@ -101,7 +101,7 @@ fun betaTestSignupForm() {
             )
             technicalInfoSection(selectedDevices, { selectedDevices = it }, selectedOS, { selectedOS = it })
 
-            agreementSection(agreeToTerms, { showTermsModal = true }, agreeToPrivacy, { showPrivacyModal = true })
+            agreementSection(agreeToTerms, { agreeToTerms = true }, agreeToPrivacy, { agreeToPrivacy = true })
 
             Row(
                 modifier = Modifier.fillMaxWidth().padding(bottom = 1.cssRem),

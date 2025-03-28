@@ -10,7 +10,7 @@ import com.varabyte.kobweb.silk.components.forms.ButtonVars
 import org.jetbrains.compose.web.css.em
 
 @Composable
-fun iconButton(onClick: () -> Unit, content: @Composable () -> Unit) {
+fun IconButton(onClick: () -> Unit, content: @Composable () -> Unit) {
     Button(
         onClick = { onClick() },
         Modifier.setVariable(ButtonVars.FontSize, 1.em), // Make button icon size relative to parent container font size
