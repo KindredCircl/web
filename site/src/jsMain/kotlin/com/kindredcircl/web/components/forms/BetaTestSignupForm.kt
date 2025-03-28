@@ -12,10 +12,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import org.jetbrains.compose.web.attributes.ButtonType
-import org.jetbrains.compose.web.attributes.FormMethod
-import org.jetbrains.compose.web.attributes.method
-import org.jetbrains.compose.web.attributes.type
+import org.jetbrains.compose.web.attributes.*
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.width
@@ -59,10 +56,13 @@ fun betaTestSignupForm() {
     Form(
         action = "https://formspree.io/f/mzzeabwn",
         attrs = {
+            method(FormMethod.Post)
+            onSubmit {
+                console.log("Form is submitting!") // 🔍 debug only
+            }
             style {
                 width(100.percent)
             }
-            method(FormMethod.Post)
         }
     ) {
         Column(
@@ -106,13 +106,11 @@ fun betaTestSignupForm() {
             ){
                 Button(
                     ButtonStyle.toModifier().toAttrs {
-                            if (!isFormValid) attr("disabled", "true")
                             type(ButtonType.Submit)
+                        if (!isFormValid) disabled()
                         }
                 ) {
                     Text("Submit")
-                    console.log("Submit")
-                    console.log(isFormValid)
                 }
             }
         }
