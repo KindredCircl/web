@@ -7,7 +7,6 @@ import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.disabled
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.padding
@@ -39,8 +38,6 @@ fun betaTestSignupForm() {
     var background by remember { mutableStateOf("") }
     var agreeToTerms by remember { mutableStateOf(false) }
     var agreeToPrivacy by remember { mutableStateOf(false) }
-    var showTermsModal by remember { mutableStateOf(false) }
-    var showPrivacyModal by remember { mutableStateOf(false) }
     var selectedPlatforms by remember { mutableStateOf(setOf<String>()) }
     var otherPlatform by remember { mutableStateOf("") }
     var reason by remember { mutableStateOf("") }
@@ -108,13 +105,14 @@ fun betaTestSignupForm() {
                 horizontalArrangement = Arrangement.Center
             ){
                 Button(
-                    ButtonStyle.toModifier()
-                        .disabled(!isFormValid)
-                        .toAttrs {
+                    ButtonStyle.toModifier().toAttrs {
+                            if (!isFormValid) attr("disabled", "true")
                             type(ButtonType.Submit)
                         }
                 ) {
                     Text("Submit")
+                    console.log("Submit")
+                    console.log(isFormValid)
                 }
             }
         }
