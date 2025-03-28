@@ -29,6 +29,7 @@ fun initColorMode(ctx: InitSilkContext) {
 
     ctx.stylesheet.registerStyleBase("body") {
         Modifier.fontFamily(
+            "Poppins", "Inter"
         )
     }
 }

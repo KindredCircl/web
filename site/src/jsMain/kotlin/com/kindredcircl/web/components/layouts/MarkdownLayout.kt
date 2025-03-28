@@ -1,6 +1,7 @@
 package com.kindredcircl.web.components.layouts
 
 import androidx.compose.runtime.Composable
+import com.kindredcircl.web.toSitePalette
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.OverflowWrap
@@ -15,7 +16,6 @@ import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Div
-import com.kindredcircl.web.toSitePalette
 
 val MarkdownStyle = CssStyle {
     base { Modifier.fillMaxSize() }
@@ -72,7 +72,7 @@ val MarkdownStyle = CssStyle {
         Modifier
             .display(DisplayStyle.Block)
             .fillMaxWidth()
-            .backgroundColor(colorMode.toSitePalette().nearBackground)
+            .backgroundColor(colorMode.toSitePalette().nearBackgroundFooter)
             .border(1.px, LineStyle.Solid, colorMode.toPalette().color)
             .borderRadius(0.25.cssRem)
             .padding(0.5.cssRem)

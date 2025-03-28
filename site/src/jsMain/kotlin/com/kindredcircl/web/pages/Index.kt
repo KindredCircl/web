@@ -1,210 +1,112 @@
 package com.kindredcircl.web.pages
 
 import androidx.compose.runtime.Composable
-import com.kindredcircl.web.HeadlineTextStyle
-import com.kindredcircl.web.SubheadlineTextStyle
+import com.kindredcircl.web.*
 import com.kindredcircl.web.components.layouts.pageLayout
-import com.kindredcircl.web.theme.ButtonStyle
-import com.kindredcircl.web.toSitePalette
+import com.kindredcircl.web.components.widgets.backToTopButton
+import com.kindredcircl.web.components.widgets.joinBeta
 import com.kindredcircl.web.util.Res
+import com.varabyte.kobweb.compose.css.AlignItems
 import com.varabyte.kobweb.compose.css.ObjectFit
-import com.varabyte.kobweb.compose.css.StyleVariable
 import com.varabyte.kobweb.compose.css.TextAlign
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.graphics.Color
-import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.core.rememberPageContext
-import com.varabyte.kobweb.silk.components.forms.Button
+import com.varabyte.kobweb.navigation.OpenLinkStrategy
+import com.varabyte.kobweb.navigation.open
 import com.varabyte.kobweb.silk.components.graphics.Image
-import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
-import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
-import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.breakpoint.displayIfAtLeast
 import com.varabyte.kobweb.silk.style.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.ColorPalettes
-import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Div
+import kotlinx.browser.window
+import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.dom.H1
+import org.jetbrains.compose.web.dom.H2
 import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
-
-// Container that has a tagline and grid on desktop, and just the tagline on mobile
-val HeroContainerStyle = CssStyle {
-    base { Modifier.fillMaxWidth().gap(2.cssRem) }
-    Breakpoint.MD { Modifier.margin { top(20.vh) } }
-}
-
-// A demo grid that appears on the homepage because it looks good
-val HomeGridStyle = CssStyle.base {
-    Modifier
-        .gap(0.5.cssRem)
-        .width(70.cssRem)
-        .height(18.cssRem)
-}
-
-private val GridCellColorVar by StyleVariable<Color>()
-val HomeGridCellStyle = CssStyle.base {
-    Modifier
-        .backgroundColor(GridCellColorVar.value())
-        .boxShadow(blurRadius = 0.6.cssRem, color = GridCellColorVar.value())
-        .borderRadius(1.cssRem)
-}
-
-@Composable
-private fun GridCell(color: Color, row: Int, column: Int, width: Int? = null, height: Int? = null) {
-    Div(
-        HomeGridCellStyle.toModifier()
-            .setVariable(GridCellColorVar, color)
-            .gridItem(row, column, width, height)
-            .toAttrs()
-    )
-}
 
 
 @Page
 @Composable
 fun homePage() {
+
     pageLayout("Home") {
-        Row(HeroContainerStyle.toModifier()) {
-            Box {
-                val sitePalette = ColorMode.current.toSitePalette()
-                Column(Modifier.fillMaxWidth()) { // Adjust top margin as needed
+        Column(Modifier.fillMaxSize().id("top")) {
+            Row(HeroContainerStyle.toModifier()) {
+                Column(Modifier.fillMaxWidth()) {
                     // Hero Section
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .padding(top = 5.px, bottom = 20.px)
+                            .padding(top = 0.5.cssRem, bottom = 1.25.cssRem)
                             .textAlign(TextAlign.Center)
                             .alignItems(alignItems = AlignItems.Center)
                     ) {
                         Image(
                             src = Res.Img.LOGO, // Replace with your image path
                             alt = "KindredCircl Logo",
-                            modifier = Modifier.width(300.px).margin(bottom = 20.px).objectFit(ObjectFit.Contain)
+                            modifier = Modifier
+                                .width(19.cssRem)
+                                .margin(bottom = 1.25.cssRem)
+                                .objectFit(ObjectFit.Contain)
                         )
 
-                        H1(HeadlineTextStyle.toAttrs()) {
+                        H1(
+                            Headline1TextStyle.toAttrs()) {
                             Text("Discover, Connect, Belong")
                         }
 
-                        P(SubheadlineTextStyle.toAttrs()) {
+                        H2(
+                            Headline2TextStyle.toModifier()
+                                .fontWeight(500)
+                                .padding(bottom = 2.cssRem)
+                                .toAttrs()) {
                             Text("Join our community and find your circle.")
                         }
-
-                        Button(
-                            onClick = { /* Handle button click */ },
-                            modifier = ButtonStyle.toModifier() // Or your custom color palette
-                        ) {
-                            Text("Be a Beta Tester")
-                        }
+                        joinBeta(
+                            onClick = {
+                                window.open(href ="/beta", strategy = OpenLinkStrategy.IN_PLACE)
+                            }
+                        )
                     }
 
                     // Content Section
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .padding(top = 50.px, bottom = 50.px)
+                            .padding(top = 2.cssRem, bottom = 3.cssRem)
                             .alignItems(alignItems = AlignItems.Center)
                             .textAlign(TextAlign.Center)
                     ) {
 
                         H1(
-                            HeadlineTextStyle.toAttrs()
+                            Headline1TextStyle.toAttrs()
                         ) {
-                            Text("Welcome to KindredCircl")
-                        }
-
-                        Div(Modifier.width(800.px).textAlign(TextAlign.Start).toAttrs()) {
-                            P(SubheadlineTextStyle.toAttrs()) {
-                                Text("We are building a platform to help people discover and connect with like-minded individuals. Our goal is to create a vibrant and supportive community where everyone feels a sense of belonging.")
-                            }
-
-                            P(SubheadlineTextStyle.toAttrs()) {
-                                Text("Stay tuned for updates as we continue to develop our platform.")
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-}
-
-@Composable
-fun HomePage() {
-    pageLayout("Home") {
-        Row(HeroContainerStyle.toModifier()) {
-            Box {
-                val sitePalette = ColorMode.current.toSitePalette()
-
-                Column(Modifier.gap(2.cssRem)) {
-                    Div(HeadlineTextStyle.toAttrs()) {
-                        SpanText(
-                            "Use this template as your starting point for ", Modifier.color(
-                                when (ColorMode.current) {
-                                    ColorMode.LIGHT -> Colors.Black
-                                    ColorMode.DARK -> Colors.White
-                                }
+                            SpanText(
+                                "Welcome to ",
+                                modifier = Modifier
+                                    .fontFamily("Poppins")
+                                    .fontWeight(500)
                             )
-                        )
-                        SpanText(
-                            "Kobweb",
-                            Modifier
-                                .color(sitePalette.brand.accent)
-                                // Use a shadow so this light-colored word is more visible in light mode
-                                .textShadow(0.px, 0.px, blurRadius = 0.5.cssRem, color = Colors.Gray)
-                        )
-                    }
+                            SpanText(
+                                "KindredCircl",
+                                KindredCirclStyle.toModifier()
+                            )
+                        }
 
-                    Div(SubheadlineTextStyle.toAttrs()) {
-                        SpanText("You can read the ")
-                        Link("/about", "About")
-                        SpanText(" page for more information.")
+                        P(
+                            ParagraphTextStyle.toAttrs()
+                        ) {
+                            Text("We are building a platform to help people discover and connect with like-minded individuals. Our goal is to create a vibrant and supportive community where everyone feels a sense of belonging. Stay tuned for updates as we continue to develop our platform.")
+                        }
                     }
-
-                    val ctx = rememberPageContext()
-                    Button(onClick = {
-                        // Change this click handler with your call-to-action behavior
-                        // here. Link to an order page? Open a calendar UI? Play a movie?
-                        // Up to you!
-                        ctx.router.tryRoutingTo("/about")
-                    }, colorPalette = ColorPalettes.Blue) {
-                        Text("This could be your CTA")
-                    }
+                    backToTopButton()
                 }
-            }
 
-            Div(HomeGridStyle
-                .toModifier()
-                .displayIfAtLeast(Breakpoint.MD)
-                .grid {
-                    rows { repeat(3) { size(1.fr) } }
-                    columns { repeat(5) {size(1.fr) } }
-                }
-                .toAttrs()
-            ) {
-                val sitePalette = ColorMode.current.toSitePalette()
-                GridCell(sitePalette.brand.primary, 1, 1, 2, 2)
-                GridCell(ColorPalettes.Monochrome._600, 1, 3)
-                GridCell(ColorPalettes.Monochrome._100, 1, 4, width = 2)
-                GridCell(sitePalette.brand.accent, 2, 3, width = 2)
-                GridCell(ColorPalettes.Monochrome._300, 2, 5)
-                GridCell(ColorPalettes.Monochrome._800, 3, 1, width = 5)
             }
         }
     }
 }
-
-
-

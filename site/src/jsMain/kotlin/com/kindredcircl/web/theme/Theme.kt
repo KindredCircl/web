@@ -45,16 +45,16 @@ val lightSurfaceContainerHigh = surfaceContainerHighLight.toCSS()
 val lightSurfaceContainerHighest = surfaceContainerHighestLight.toCSS()
 val lightKCPurple = kCPurpleLight.toCSS()
 val lightOnKCPurple = onKCPurpleLight.toCSS()
-val lightKCPurpleContainer = kCPurpleContainerLight.toCSS()
-val lightOnKCPurpleContainer = onKCPurpleContainerLight.toCSS()
 val lightKCOrange = kCOrangeLight.toCSS()
 val lightOnKCOrange = onKCOrangeLight.toCSS()
-val lightKCOrangeContainer = kCOrangeContainerLight.toCSS()
-val lightOnKCOrangeContainer = onKCOrangeContainerLight.toCSS()
 val lightKCBlue = kCBlueLight.toCSS()
 val lightOnKCBlue = onKCBlueLight.toCSS()
-val lightKCBlueContainer = kCBlueContainerLight.toCSS()
-val lightOnKCBlueContainer = onKCBlueContainerLight.toCSS()
+val lightKCYellow = kCYellowLight.toCSS()
+val lightOnKCYellow = onKCYellowLight.toCSS()
+val lightKCDeepPurple = kCDeepPurpleLight.toCSS()
+val lightOnKCDeepPurple = onKCDeepPurpleLight.toCSS()
+val lightKCAccentYellow = kCAccentYellowLight.toCSS()
+val lightOnKCAccentYellow = onKCAccentYellowLight.toCSS()
 
 
 // Dark Theme
@@ -95,16 +95,16 @@ val darkSurfaceContainerHigh = surfaceContainerHighDark.toCSS()
 val darkSurfaceContainerHighest = surfaceContainerHighestDark.toCSS()
 val darkKCPurple = kCPurpleDark.toCSS()
 val darkOnKCPurple = onKCPurpleDark.toCSS()
-val darkKCPurpleContainer = kCPurpleContainerDark.toCSS()
-val darkOnKCPurpleContainer = onKCPurpleContainerDark.toCSS()
 val darkKCOrange = kCOrangeDark.toCSS()
 val darkOnKCOrange = onKCOrangeDark.toCSS()
-val darkKCOrangeContainer = kCOrangeContainerDark.toCSS()
-val darkOnKCOrangeContainer = onKCOrangeConatainerDark.toCSS()
 val darkKCBlue = kCBlueDark.toCSS()
 val darkOnKCBlue = onKCBlueDark.toCSS()
-val darkKCBlueContainer = kCBlueContainerDark.toCSS()
-val darkOnKCBlueContainer = onKCBlueContainerDark.toCSS()
+val darkKCYellow = kCYellowDark.toCSS()
+val darkOnKCYellow = onKCYellowDark.toCSS()
+val darkKCDeepPurple = kCDeepPurpleDark.toCSS()
+val darkOnKCDeepPurple = onKCDeepPurpleDark.toCSS()
+val darkKCAccentYellow = kCAccentYellowDark.toCSS()
+val darkOnKCAccentYellow = onKCAccentYellowDark.toCSS()
 
 fun Color.toCSS(): CSSColorValue = outerColor.argb(this.alpha, this.red, this.green, this.blue)
 fun Color.copyf(alpha: Float) = outerColor.argb(
@@ -129,16 +129,16 @@ val buttonGradient = linearGradient(
 
 val buttonGradientHover = linearGradient(
     LinearGradient.Direction.ToBottomRight,
-    darkKCBlueContainer,
+    darkKCBlue,
     outerColor.rgb(
-        kCBlueContainerLight.red - 10,
-        kCBlueContainerLight.green - 10,
-        kCBlueContainerLight.blue - 10
+        kCBlueLight.red - 10,
+        kCBlueLight.green - 10,
+        kCBlueLight.blue - 10
     )
 )
 
 val buttonGradientPressed = linearGradient(
     LinearGradient.Direction.ToBottom,
-    darkKCBlueContainer,
-    kCBlueContainerLight.copyf(alpha = 0.9f)
+    darkKCBlue,
+    kCBlueLight.copyf(alpha = 0.9f)
 )

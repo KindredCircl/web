@@ -36,6 +36,9 @@ kobweb {
                     rel = "stylesheet"
                     href = "https://fonts.googleapis.com/icon?family=Poppins"
                 }
+                script{
+                    src = "toc-dropdown.js"
+                }
             }
         }
     }

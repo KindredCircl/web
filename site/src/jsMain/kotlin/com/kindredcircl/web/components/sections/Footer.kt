@@ -1,8 +1,9 @@
 package com.kindredcircl.web.components.sections
 
 import androidx.compose.runtime.Composable
+import com.kindredcircl.web.CopyrightStyle
+import com.kindredcircl.web.FooterStyle
 import com.kindredcircl.web.components.widgets.socialBar
-import com.kindredcircl.web.theme.CopyrightStyle
 import com.kindredcircl.web.toSitePalette
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -23,15 +24,10 @@ import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 import kotlin.js.Date
 
-val FooterStyle = CssStyle.base {
-    Modifier
-        .backgroundColor(colorMode.toSitePalette().nearBackground)
-        .padding(topBottom = 1.5.cssRem, leftRight = 10.percent)
-}
 
 @Composable
 fun footer(modifier: Modifier = Modifier) {
-    Row(Modifier.fillMaxWidth().then(modifier)) {
+    Row(FooterStyle.toModifier().then(modifier)) {
         Box(
             modifier = Modifier
                 .classNames("footer")
@@ -67,7 +63,7 @@ private fun copyright() {
             .toAttrs()
     ) {
         FaCopyright(
-            modifier = Modifier.padding(right = 10.px)
+            modifier = Modifier.padding(right = 0.625.cssRem),
         )
         Text("${Date().getFullYear()} All Rights Reserved")
     }

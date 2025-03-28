@@ -1,4 +1,4 @@
 # Kobweb ignores
-.kobweb/*
+.kobweb/server
 !.kobweb/conf.yaml
 

@@ -1,12 +1,11 @@
 package com.kindredcircl.web.components.sections
 
 import androidx.compose.runtime.*
+import com.kindredcircl.web.*
+import com.kindredcircl.web.components.MenuState
 import com.kindredcircl.web.components.widgets.closeButton
 import com.kindredcircl.web.components.widgets.hamburgerButton
-import com.kindredcircl.web.theme.LinkBaseStyle
-import com.kindredcircl.web.theme.lightKCPurple
 import com.kindredcircl.web.util.Res
-import com.varabyte.kobweb.compose.css.Width
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
@@ -17,18 +16,12 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.overlay.Overlay
 import com.varabyte.kobweb.silk.components.overlay.OverlayVars
-import com.varabyte.kobweb.silk.style.CssStyle
+import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.animation.Keyframes
 import com.varabyte.kobweb.silk.style.animation.toAnimation
-import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.dom.Text
 
-
-val MenuHeaderStyle = CssStyle.base {
-    Modifier.fillMaxWidth().padding(1.cssRem)
-}
 
 @Composable
 private fun menuLink(path: String, text: String) {
@@ -42,9 +35,9 @@ private fun menuItems() {
     menuLink("/tos", "Terms of Service")
     menuLink("/guidelines", "Community Guidelines")
     menuLink("beta", "Beta Testing Signup")
-    menuLink("/faq", "FAQ")
+//    menuLink("/faq", "FAQ")
     menuLink("/privacy", "Privacy")
-    menuLink("/updates", "Updates")
+//    menuLink("/updates", "Updates")
 }
 
 val MenuSlideInAnim = Keyframes {
@@ -57,24 +50,11 @@ val MenuSlideInAnim = Keyframes {
     }
 }
 
-enum class MenuState {
-    CLOSED,
-    OPEN,
-    CLOSING;
-
-    fun close() = when (this) {
-        CLOSED -> CLOSED
-        OPEN -> CLOSING
-        CLOSING -> CLOSING
-    }
-}
-
 @Composable
 fun menuHeader() {
     Row(MenuHeaderStyle.toModifier(), verticalAlignment = Alignment.CenterVertically) {
         Row(
-            Modifier
-                .fontSize(1.5.cssRem)
+            ParagraphTextStyle.toModifier()
                 .gap(1.cssRem),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -102,15 +82,8 @@ private fun menu(menuState: MenuState, close: () -> Unit, onAnimationEnd: () -> 
     ) {
         key(menuState) {
             Column(
-                Modifier
-                    .fillMaxHeight()
-                    .width(Width.FitContent)
+                MenuDrawerStyle.toModifier()
                     .align(Alignment.TopStart)
-                    // Close button will appear roughly over the hamburger button, so the user can close
-                    // things without moving their finger / cursor much.
-                    .padding(top = 1.cssRem, leftRight = 1.cssRem)
-                    .gap(1.5.cssRem)
-                    .backgroundColor(lightKCPurple)
                     .animation(
                         MenuSlideInAnim.toAnimation(
                             duration = 200.ms,
@@ -121,17 +94,15 @@ private fun menu(menuState: MenuState, close: () -> Unit, onAnimationEnd: () -> 
                             fillMode = AnimationFillMode.Forwards
                         )
                     )
-                    .borderRadius(topRight = 2.cssRem)
                     .onClick { it.stopPropagation() }
                     .onAnimationEnd { onAnimationEnd() },
                 horizontalAlignment = Alignment.Start
             ) {
                 closeButton(onClick = { close() })
                 Column(
-                    Modifier
+                    ParagraphTextStyle.toModifier()
                         .padding(right = 0.75.cssRem)
-                        .gap(1.5.cssRem)
-                        .fontSize(1.4.cssRem),
+                        .gap(1.5.cssRem),
                     horizontalAlignment = Alignment.Start
                 ) {
                     Row(
@@ -149,7 +120,10 @@ private fun menu(menuState: MenuState, close: () -> Unit, onAnimationEnd: () -> 
                                     .display(DisplayStyle.Block)
                                     .padding(right = 0.5.cssRem))
                         }
-                        Text("KindredCircl")
+                        SpanText(
+                            "KindredCircl",
+                            KindredCirclStyle.toModifier()
+                        )
                     }
                     menuItems()
                 }

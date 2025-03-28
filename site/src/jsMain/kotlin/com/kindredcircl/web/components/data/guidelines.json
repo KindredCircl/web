@@ -1,0 +1,38 @@
+
+
+{
+  "doc_name": "string",
+  "version": "string",
+  "last_updated":  "timestamp",
+  "document": [
+    {
+      "content_type": ["intro", "sections"],
+      "content": [
+        {
+          "type": "string",
+          "title": ["string", null],
+          "anchor": ["string", null],
+          "content": [
+            {
+              "type": "string",
+              "text": "string with any inlined style"
+            }
+          ],
+          "children": [
+            {
+              "type": "string",
+              "title": "string",
+              "anchor": "string",
+              "content": [
+                {
+                  "type": "string",
+                  "text": "string with any inlined style"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

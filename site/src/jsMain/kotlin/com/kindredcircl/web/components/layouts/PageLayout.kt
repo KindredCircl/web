@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import com.kindredcircl.web.components.sections.footer
 import com.kindredcircl.web.components.sections.menuHeader
-import com.kindredcircl.web.theme.lightPrimaryContainer
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
@@ -34,6 +33,7 @@ fun pageLayout(
     LaunchedEffect(title) {
         document.title = "KindredCircl: Discover, Connect, Belong"
     }
+
     Box(
         Modifier
             .fillMaxWidth()
@@ -44,8 +44,7 @@ fun pageLayout(
             // pushed further down if the first row grows beyond the page.
             // Grids are powerful but have a bit of a learning curve. For more info, see:
             // https://css-tricks.com/snippets/css/complete-guide-grid/
-            .gridTemplateRows { size(1.fr); size(minContent) }
-            .background(lightPrimaryContainer),
+            .gridTemplateRows { size(1.fr); size(minContent) },
         contentAlignment = Alignment.Center
     ) {
         Column(
