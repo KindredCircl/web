@@ -1,16 +1,16 @@
 package com.kindredcircl.web.components.widgets
 
 import androidx.compose.runtime.Composable
+import com.kindredcircl.web.CircleButtonVariant
+import com.kindredcircl.web.UncoloredButtonVariant
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.forms.ButtonVars
 import org.jetbrains.compose.web.css.em
-import com.kindredcircl.web.CircleButtonVariant
-import com.kindredcircl.web.UncoloredButtonVariant
 
 @Composable
-fun IconButton(onClick: () -> Unit, content: @Composable () -> Unit) {
+fun iconButton(onClick: () -> Unit, content: @Composable () -> Unit) {
     Button(
         onClick = { onClick() },
         Modifier.setVariable(ButtonVars.FontSize, 1.em), // Make button icon size relative to parent container font size
