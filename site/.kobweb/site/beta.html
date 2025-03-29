@@ -185,7 +185,7 @@
          <p class="paragraph-text" style="padding: 0px 0px 0px 1rem;"><span class="silk-span-text kindred-circl kindred-circl_light">KindredCircl</span><span class="silk-span-text" style="white-space: pre-wrap;"> may terminate a Beta Tester's participation in the Beta Program at any time for any reason.</span></p>
          <p class="paragraph-text" style="padding: 0px 0px 0px 1rem;"><span class="silk-span-text" style="white-space: pre-wrap;">Beta Testers may terminate their participation at any time by notifying </span><span class="silk-span-text kindred-circl kindred-circl_light">KindredCircl</span><span class="silk-span-text">.</span></p>
          <h2 class="headline2-text" id="apply-to-be-a-beta-tester"><span class="silk-span-text">Apply to be a Beta Tester</span></h2>
-         <form style="width: 100%;" action="https://formspree.io/f/mzzeabwn" method="post">
+         <form style="width: 100%; border-width: 0.1rem; border-color: rgb(0, 0, 0); border-style: solid; padding: 0.5rem;" action="https://formspree.io/f/mzzeabwn" method="post">
           <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="gap: 1rem; width: 100%;">
            <div style="margin: 1rem 0px 0px; width: 100%;">
             <legend><span class="silk-span-text paragraph-text" style="font-family: Inter; font-weight: 700;">Contact Information</span></legend>
@@ -198,27 +198,6 @@
              </div>
              <div style="display: flex; flex-direction: column; margin: 0px 0px 1rem; width: 100%;">
               <label for="email">Email Address<sup style="color: rgb(255, 0, 0);">*</sup></label><input style="width: 100%;" type="email" id="email" name="email" required>
-             </div>
-            </div>
-           </div>
-           <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; padding: 0.5rem 0px;">
-            <legend><span class="silk-span-text paragraph-text" style="font-weight: bold; margin: 0px 0px 1rem;">Demographic Information</span></legend>
-            <div class="silk-simple-grid" style="--silk-simple-grid-col-count-zero: 1; --silk-simple-grid-col-count-sm: 1; --silk-simple-grid-col-count-md: 2; --silk-simple-grid-col-count-lg: 3; --silk-simple-grid-col-count-xl: 3; width: 100%; margin: 0px 0px 1rem; gap: 1rem;">
-             <div style="display: flex; flex-direction: column; width: 100%; grid-column: 1 / -1;">
-              <div style="margin: 0px 0px 1rem;">
-               <label>Age<sup style="color: rgb(255, 0, 0); margin: 0px 0px 0px 0.25rem;">*</sup></label><input class="fom-control" style="width: 100%;" type="number" name="age" required>
-              </div>
-              <div style="grid-column: 1 / -1; animation: 400ms ease-in-out 0s 1 reverse forwards running expand-collapse; overflow: hidden; max-height: 0px;">
-               <p style="color: rgb(255, 0, 0); font-weight: bold; margin: 0px 0px 1rem;">You must be at least 15 to participate.</p>
-              </div>
-              <div style="grid-column: 1 / -1; animation: 400ms ease-in-out 0s 1 reverse forwards running expand-collapse; overflow: hidden; max-height: 0px;">
-               <div style="margin: 0px 0px 1rem;">
-                <label>Parent/Guardian Name<sup style="color: rgb(255, 0, 0); margin: 0px 0px 0px 0.25rem;">*</sup></label><input style="width: 100%;" type="text" name="parentName" required>
-               </div>
-               <div style="margin: 0px 0px 1rem;">
-                <label>Parent/Guardian Email<sup style="color: rgb(255, 0, 0); margin: 0px 0px 0px 0.25rem;">*</sup></label><input style="width: 100%;" type="email" name="parentEmail" required>
-               </div>
-              </div>
              </div>
              <div style="display: flex; flex-direction: column; width: 100%;">
               <div style="margin: 0px 0px 1rem;">
@@ -235,14 +214,59 @@
                <label>Country</label><input class="fom-control" style="width: 100%;" type="text" name="country">
               </div>
              </div>
-             <div style="display: flex; flex-direction: column; width: 100%; grid-column: 1 / -1;">
+            </div>
+           </div>
+           <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; padding: 0.5rem 0px;">
+            <legend><span class="silk-span-text paragraph-text" style="font-weight: bold; margin: 0px 0px 1rem;">Demographic Information</span></legend>
+            <div class="silk-simple-grid" style="--silk-simple-grid-col-count-zero: 1; --silk-simple-grid-col-count-sm: 1; --silk-simple-grid-col-count-md: 2; --silk-simple-grid-col-count-lg: 2; --silk-simple-grid-col-count-xl: 2; width: 100%; margin: 0px 0px 1rem; gap: 1rem;">
+             <div style="display: flex; flex-direction: column; width: 100%;">
               <div style="margin: 0px 0px 1rem;">
-               <label>Gender (optional)</label><input class="fom-control" style="width: 100%;" type="text" name="gender">
+               <label>Age<sup style="color: rgb(255, 0, 0); margin: 0px 0px 0px 0.25rem;">*</sup></label>
+               <div>
+                <label><input type="radio" name="ageBracket" value="15-17" required> 15–17</label>
+                <br><label><input type="radio" name="ageBracket" value="18+" required> 18+</label>
+               </div>
               </div>
              </div>
-             <div style="display: flex; flex-direction: column; width: 100%; grid-column: 1 / -1;">
+             <div style="display: flex; flex-direction: column; width: 100%;">
               <div style="margin: 0px 0px 1rem;">
-               <label>Background / Identity (optional)</label><textarea class="fom-control" style="width: 100%;" name="background"></textarea>
+               <label>Please select the gender identity that best describes you:</label>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Cisgender Male">Cisgender Male
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Cisgender Female">Cisgender Female
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Transgender Male">Transgender Male
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Transgender Female">Transgender Female
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Non-binary">Non-binary
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Genderfluid">Genderfluid
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Genderqueer">Genderqueer
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Prefer to self-describe">Prefer to self-describe
+               </div>
+               <div class="kobweb-row kobweb-arrange-start kobweb-align-top" style="align-items: center; margin: 0px 0px 0.5rem; gap: 0.5rem;">
+                <input type="radio" name="gender" value="Prefer not to say">Prefer not to say
+               </div>
+              </div>
+             </div>
+             <div style="grid-column: 1 / -1; animation: 500ms ease-in-out 0s 1 reverse forwards running expand-sub-list; overflow: hidden;"></div>
+             <div style="display: flex; flex-direction: column; grid-column: 1 / -1; width: 100%;">
+              <div style="margin: 0px 0px 1rem;">
+               <label>Background/Identity (Optional)</label>
+               <div class="kobweb-box kobweb-align-top-start" style="position: relative; width: 100%; height: 12rem;">
+                <span class="silk-span-text" style="position: absolute; top: 0px; left: 0px; padding: 0.5rem; color: rgb(128, 128, 128); font-style: italic; font-size: small; pointer-events: none;">We are committed to building a diverse and inclusive community on KindredCircl. Sharing information about your background and identity can help us ensure our beta testing group reflects the wide range of perspectives within our potential user base. Please share any aspects of your background or identity that you feel are relevant to your experience with KindredCircl. All information provided will be kept confidential.</span><textarea class="form-control" style="width: 100%; height: 100%; resize: none; padding: 0.5rem;" name="background"></textarea>
+               </div>
               </div>
              </div>
             </div>
@@ -358,9 +382,6 @@
                </div>
               </div>
              </div>
-             <div style="grid-column: 1 / -1;">
-              <input type="checkbox" id="justicePassion" name="socialJusticePassion"><label for="justicePassion"> I’m passionate about social justice (e.g., human rights, women’s rights, LGBTQ+ rights)</label>
-             </div>
             </div>
            </div>
            <div class="kobweb-col kobweb-arrange-top kobweb-align-start" style="width: 100%; padding: 2rem 0px;">
@@ -381,7 +402,7 @@
             <div class="silk-simple-grid" style="--silk-simple-grid-col-count-zero: 1; --silk-simple-grid-col-count-sm: 1; --silk-simple-grid-col-count-md: 2; --silk-simple-grid-col-count-lg: 2; --silk-simple-grid-col-count-xl: 2; width: 100%; gap: 1rem;">
              <div style="display: flex; flex-direction: column; margin: 0px 0px 1rem; width: 100%;">
               <div style="margin: 0px 0px 1rem;">
-               <label>What type of device(s) will you use to access KindredCircl?<sup style="color: rgb(255, 0, 0); margin: 0px 0px 0px 0.25rem;">*</sup></label>
+               <label>What type of device(s) do you use?<sup style="color: rgb(255, 0, 0); margin: 0px 0px 0px 0.25rem;">*</sup></label>
                <div class="kobweb-col kobweb-arrange-top kobweb-align-start">
                 <label style="display: block;"><input type="checkbox"> Smartphone</label><label style="display: block;"><input type="checkbox"> Tablet</label><label style="display: block;"><input type="checkbox"> Computer</label>
                </div>
