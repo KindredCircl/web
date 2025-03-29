@@ -85,26 +85,8 @@ fun styledTextWithKindredCirclHighlight(text: String) {
         }
     }
 }
-//
-//@Composable
-//fun Field(label: String, value: String, onChange: (String) -> Unit, name: String, type: InputType = InputType.Text, required: Boolean = false) {
-//    Label(forId = name) { Text(label) }
-//    Input(type, attrs = {
-//        id(name)
-//        this.name(name)
-//        this.value(value)
-//        onInput { onChange(it.value) }
-//        if (required) required
-//        onBlur { /* Add validation here */ }
-//    })
-//}
-//
-//@Composable
-//fun CheckboxWithModal(label: String, checked: Boolean, onAgree: () -> Unit, onRequestOpen: () -> Unit) {
-//    Label {
-//        InputType.Checkbox(checked = checked, onCheckedChange = { onRequestOpen() })
-//        Text(" $label")
-//    }
-//}
 
-
+fun isValidEmail(email: String): Boolean {
+    val emailRegex = Regex("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")
+    return emailRegex.matches(email)
+}

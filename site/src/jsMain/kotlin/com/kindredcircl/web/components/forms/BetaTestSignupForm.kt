@@ -3,19 +3,21 @@ package com.kindredcircl.web.components.forms
 import androidx.compose.runtime.*
 import com.kindredcircl.web.ButtonStyle
 import com.kindredcircl.web.components.sections.betaTest.formSections.*
+import com.kindredcircl.web.util.isValidEmail
+import com.varabyte.kobweb.compose.css.borderColor
+import com.varabyte.kobweb.compose.css.borderStyle
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.silk.style.toModifier
 import org.jetbrains.compose.web.attributes.*
-import org.jetbrains.compose.web.css.cssRem
-import org.jetbrains.compose.web.css.percent
-import org.jetbrains.compose.web.css.width
+import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Form
 import org.jetbrains.compose.web.dom.Text
@@ -25,7 +27,7 @@ fun betaTestSignupForm() {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
-    var age by remember { mutableStateOf("") }
+    var ageBracket by remember { mutableStateOf("") }
     var parentName by remember { mutableStateOf("") }
     var parentEmail by remember { mutableStateOf("") }
     var city by remember { mutableStateOf("") }
@@ -48,9 +50,10 @@ fun betaTestSignupForm() {
     var selectedDevices by remember { mutableStateOf(setOf<String>()) }
     var selectedOS by remember { mutableStateOf(setOf<String>()) }
 
-    val isUnder18 = age.toIntOrNull()?.let { it < 18 } ?: false
-    val isFormValid = firstName.isNotBlank() && lastName.isNotBlank() &&
-            age.isNotBlank() && (!isUnder18 || (parentName.isNotBlank() && parentEmail.isNotBlank())) &&
+    val isUnder18 = ageBracket == "15-17"
+    val isFormValid = firstName.isNotBlank() && lastName.isNotBlank() && email.isNotBlank() &&
+            isValidEmail(email) && ageBracket.isNotBlank() &&
+            (!isUnder18 || (parentName.isNotBlank() && parentEmail.isNotBlank())) &&
             agreeToTerms && agreeToPrivacy
 
     Form(
@@ -62,6 +65,10 @@ fun betaTestSignupForm() {
             }
             style {
                 width(100.percent)
+                borderWidth(0.1.cssRem)
+                borderColor(Colors.Black)
+                borderStyle(LineStyle.Solid)
+                padding(0.5.cssRem)
             }
         }
     ) {
@@ -69,16 +76,20 @@ fun betaTestSignupForm() {
             modifier = Modifier.gap(1.cssRem).fillMaxWidth()
         ) {
 
-            contactInfoSection(firstName, { firstName = it }, lastName, { lastName = it }, email, { email = it })
-            demographicSection(
-                age, { age = it },
-                parentName, { parentName = it },
-                parentEmail, { parentEmail = it },
-                city, { city = it },
-                state, { state = it },
+            contactInfoSection(
+                firstName, { firstName = it },
+                lastName, { lastName = it },
+                email, { email = it },
                 country, { country = it },
                 gender, { gender = it },
                 background, { background = it }
+            )
+            demographicSection(
+                ageBracket, { ageBracket = it },
+                parentName, { parentName = it },
+                parentEmail, { parentEmail = it },
+                city, { city = it },
+                state, { state = it }
             )
             socialMediaSection(
                 selectedPlatforms, { selectedPlatforms = it },

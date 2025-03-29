@@ -98,19 +98,6 @@ fun kindredCirclSection(
                     }
                 }
             }
-
-            // Optional social justice alignment checkbox
-            Div(Modifier.gridColumn(1, -1).toAttrs()) {
-                Input(InputType.Checkbox, attrs = {
-                    id("justicePassion")
-                    name("socialJusticePassion")
-                    checked(passionateAboutJustice)
-                    onChange { onJusticeChange(!passionateAboutJustice) }
-                })
-                Label(forId = "justicePassion") {
-                    Text(" I’m passionate about social justice (e.g., human rights, women’s rights, LGBTQ+ rights)")
-                }
-            }
         }
     }
 }

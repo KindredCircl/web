@@ -50,7 +50,7 @@ fun technicalInfoSection(
                     .width(100.percent)
                     .toAttrs()
             ) {
-                formField("What type of device(s) will you use to access KindredCircl?", required = true) {
+                formField("What type of device(s) do you use?", required = true) {
                     Column {
                         allDevices.forEach { device ->
                             Label(attrs = Modifier.display(DisplayStyle.Block).toAttrs()) {
